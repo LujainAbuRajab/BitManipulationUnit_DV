@@ -1,0 +1,50 @@
+Folder PATH listing
+Volume serial number is 58FE-01CB
+C:.
+|   project_tree.txt
+|   README.md
+|   
++---dut_rm
++---rtl
++---sim
+|       makefile
+|       
+\---tb
+    |   top_tb.sv
+    |   
+    +---env
+    |   |   dut_env.sv
+    |   |   
+    |   +---agent
+    |   |   |   dut_agent.sv
+    |   |   |   
+    |   |   +---driver
+    |   |   |       dut_driver.sv
+    |   |   |       
+    |   |   +---monitor
+    |   |   |       dut_monitor.sv
+    |   |   |       
+    |   |   \---sequencer
+    |   |           dut_sequencer.sv
+    |   |           transaction.sv
+    |   |           
+    |   \---scoreboard
+    |           dut_scoreboard.sv
+    |           
+    +---include
+    |       uvm_def.sv
+    |       
+    +---interface
+    |       Bit_Manipulation_intf.sv
+    |       
+    +---packages
+    |       dut_test_package.sv
+    |       
+    +---sequences
+    |   \---and_sequences
+    |           normal_and_operation_seq.sv
+    |           
+    \---tests
+            dut_base_test.sv
+            dut_reg_test.sv
+            
