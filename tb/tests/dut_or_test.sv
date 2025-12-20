@@ -1,5 +1,4 @@
-// File: dut_or_test.sv
-// Purpose: UVM test to run basic OR operation sequence
+//UVM test to run basic OR operation sequence
 
 import uvm_pkg::*;
 `include "uvm_macros.svh"

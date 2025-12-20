@@ -21,7 +21,9 @@ class dut_env extends uvm_env;
 
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-    m_agent.m_monitor.ap.connect(m_scoreboard.analysis_export);
+
+    m_agent.m_monitor.input_ap.connect(m_scoreboard.in_imp);
+    m_agent.m_monitor.output_ap.connect(m_scoreboard.out_imp);
   endfunction
 
 endclass : dut_env
