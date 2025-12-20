@@ -1,4 +1,4 @@
-// Purpose: Top-level testbench for BMU verification
+//Top-level testbench for BMU verification
 
 `timescale 1ns/1ps
 

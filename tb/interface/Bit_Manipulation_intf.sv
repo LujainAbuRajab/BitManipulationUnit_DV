@@ -1,5 +1,3 @@
-// Purpose: DUT <-> TB interface for BMU verification
-// Note: Black-box DV interface – no internal DUT knowledge assumed
 `timescale 1ns/1ps
 
 interface Bit_Manipulation_intf (input logic clk);

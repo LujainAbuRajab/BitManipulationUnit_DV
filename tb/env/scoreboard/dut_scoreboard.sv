@@ -1,4 +1,4 @@
-// Purpose: BMU scoreboard (FIFO match, black-box, no fixed latency assumption)
+// FIFO match, no fixed latency assumption
 
 `timescale 1ns/1ps
 

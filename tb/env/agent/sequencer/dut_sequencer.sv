@@ -1,4 +1,4 @@
-// Purpose: UVM sequencer for BMU transactions
+// UVM sequencer for BMU transactions
 
 `timescale 1ns/1ps
 

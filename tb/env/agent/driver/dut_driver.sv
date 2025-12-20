@@ -1,5 +1,4 @@
-// Purpose: BMU UVM driver
-// Note: Black-box DV driver – drives only DUT inputs
+//drives only DUT inputs
 
 `timescale 1ns/1ps
 

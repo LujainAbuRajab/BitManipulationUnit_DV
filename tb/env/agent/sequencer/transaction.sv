@@ -1,6 +1,4 @@
-// Purpose: BMU transaction definition
-// Note: Black-box DV transaction – no internal DUT assumptions
-
+// Black-box DV transaction – no internal DUT assumptions
 `timescale 1ns/1ps
 
 import uvm_pkg::*;

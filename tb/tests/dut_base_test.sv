@@ -1,6 +1,4 @@
-// Purpose: Base UVM test for BMU verification
-
-`timescale 1ns/1ps
+//Base UVM test for BMU verification
 
 import uvm_pkg::*;
 `include "uvm_macros.svh"

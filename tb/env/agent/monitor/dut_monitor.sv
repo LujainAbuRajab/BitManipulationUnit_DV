@@ -1,6 +1,3 @@
-// Purpose: BMU UVM monitor
-// Note: Black-box DV monitor – observes inputs and outputs as independent events
-
 `timescale 1ns/1ps
 
 import uvm_pkg::*;
