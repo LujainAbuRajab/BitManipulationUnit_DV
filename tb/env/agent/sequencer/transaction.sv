@@ -8,16 +8,15 @@ import rtl_pkg::*;
 
 class bmu_transaction extends uvm_sequence_item;
 
-// DUT-visible fields (inputs only)
+  // DUT-visible fields (inputs only)
   rand logic signed [31:0] a_in;
   rand logic        [31:0] b_in;
 
-    // Observed DUT outputs (filled by monitor)
+  // Observed DUT outputs (filled by monitor)
   logic [31:0] dut_result;
   logic        dut_error;
 
   rand rtl_alu_pkt_t       ap;
-
   rand logic               valid_in;
   rand logic               csr_ren_in;
   rand logic        [31:0] csr_rddata_in;

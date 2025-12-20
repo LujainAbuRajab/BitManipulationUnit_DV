@@ -42,7 +42,43 @@ C:.
     |       
     +---sequences
     |   \---and_sequences
-    |           normal_and_operation_seq.sv
+    |           normal_and_operation_seq.sv   
+    ├── logical_sequences/
+    │   ├── or_seq.sv
+    │   ├── orn_seq.sv
+    │   ├── xor_seq.sv
+    │   └── xnor_seq.sv
+    │
+    ├── shift_sequences/
+    │   ├── srl_seq.sv
+    │   ├── sra_seq.sv
+    │   ├── ror_seq.sv
+    │   ├── binv_seq.sv
+    │   └── sh2add_seq.sv
+    │
+    ├── arithmetic_sequences/
+    │   └── sub_seq.sv
+    │
+    ├── bitmanip_sequences/
+    │   ├── slt_seq.sv
+    │   ├── sltu_seq.sv
+    │   ├── ctz_seq.sv
+    │   ├── cpop_seq.sv
+    │   ├── sextb_seq.sv
+    │   ├── max_seq.sv
+    │   ├── pack_seq.sv
+    │   └── grev_seq.sv
+    │
+    ├── csr_sequences/
+    │   └── csr_conflict_seq.sv
+    │
+    ├── error_sequences/
+    │   ├── invalid_ap_combo_seq.sv
+    │   ├── invalid_zba_seq.sv
+    │   └── invalid_unsign_seq.sv
+    │
+    └── random_sequences/
+        └── random_bmu_seq.sv
     |           
     \---tests
             dut_base_test.sv
