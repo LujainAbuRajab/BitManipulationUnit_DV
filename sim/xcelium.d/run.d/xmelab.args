@@ -1,0 +1,32 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
++UVM_USE_COLOR
++incdir+../dut
++incdir+../tb
++incdir+tb/pkg
++incdir+tb/interface
++incdir+rtl
+-loadpli
+/usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmpli.so:uvm_pli_boot
+-timescale
+1ns/1ps
+-ACCESS
++rwc
+-LWDGEN
+-no_analogsolver
+-MESSAGES
+bmu_tb_top
+-dms_perf
+-XLMODE
+./xcelium.d/run.lnx8664.25.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx8664.25.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.25.03.d/hdl.var
+-WORK
+worklib
+-IRUNHASTOP
+-HASXLMODE

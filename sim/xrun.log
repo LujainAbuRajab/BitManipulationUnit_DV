@@ -1,0 +1,215 @@
+xrun(64): 25.03-s006: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	25.03-s006: Started on Dec 21, 2025 at 11:14:52 EET
+xrun
+	-64
+	-sv
+	-uvm
+	-timescale 1ns/1ps
+	-f compile.f
+		+incdir+../dut
+		+incdir+../tb
+		../rtl/rtl_defines.sv
+		../rtl/rtl_pdef.sv
+		../rtl/rtl_def.sv
+		../rtl/rtl_lib.sv
+		../rtl/Bit_Manipulation_Unit.sv
+		../tb/env/agent/sequencer/transaction.sv
+		../tb/env/agent/sequencer/dut_sequencer.sv
+		../tb/env/agent/monitor/dut_monitor.sv
+		../tb/env/agent/driver/dut_driver.sv
+		../tb/env/agent/dut_agent.sv
+		../tb/env/scoreboard/dut_scoreboard.sv
+		../tb/env/dut_env.sv
+		../tb/tests/dut_base_test.sv
+		../tb/interface/Bit_Manipulation_intf.sv
+		../tb/top_tb.sv
+	-top bmu_tb_top
+	-access +rwc
+	+incdir+tb/pkg
+	+incdir+tb/interface
+	+incdir+rtl
+	-lwdgen
+	-classlinedebug
+	-enable_tpe
+	-ext_src_info
+	-ext_macro_src_info
+	+UVM_USE_COLOR
+
+   User defined plus("+") options:
+	+UVM_USE_COLOR
+
+Recompiling... reason: file '../tb/env/scoreboard/dut_scoreboard.sv' is newer than expected.
+	expected: Sun Dec 21 10:38:28 2025
+	actual:   Sun Dec 21 11:14:50 2025
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d
+xmvlog: *W,NOTIND: unable to access -INCDIR ../dut (No such file or directory).
+xmvlog: *W,NOTIND: unable to access -INCDIR tb/pkg (No such file or directory).
+xmvlog: *W,NOTIND: unable to access -INCDIR tb/interface (No such file or directory).
+xmvlog: *W,NOTIND: unable to access -INCDIR rtl (No such file or directory).
+file: ../rtl/Bit_Manipulation_Unit.sv
+  #(`include "../rtl/library/rtl_param.vh")
+           |
+xmvlog: *W,NOINUF (../rtl/Bit_Manipulation_Unit.sv,3|11): `include directive not isolated on its own line [16.5(IEEE)].
+  #(`include "../rtl/library/rtl_param.vh")
+                                         |
+xmvlog: *W,NOINUF (../rtl/Bit_Manipulation_Unit.sv,3|41): `include directive not isolated on its own line [16.5(IEEE)].
+file: ../tb/env/scoreboard/dut_scoreboard.sv
+file: ../tb/top_tb.sv
+xmvlog: *W,SPDUSD: Include directory ../tb given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 5
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		uvm_pkg
+		rtl_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		$unit_0x623b9d7c
+		bmu_tb_top
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.rvbradder:sv <0x693b50d0>
+			streams:   4, words:  1647
+		worklib.rvdff:sv <0x4452db26>
+			streams:   3, words:   818
+		worklib.rvdffs:sv <0x0104b1fd>
+			streams:   2, words:   603
+		worklib.rvdffe:sv <0x7de86652>
+			streams:   1, words:   375
+		worklib.rvdff:sv <0x3b73d7e0>
+			streams:   3, words:   868
+		worklib.rvdffs:sv <0x2df1df16>
+			streams:   2, words:   635
+		worklib.rvdffpcie:sv <0x5d45d2b1>
+			streams:   1, words:   393
+		worklib.Bit_Manipulation_Unit:sv <0x0b7824f3>
+			streams:  56, words: 32658
+		worklib.Bit_Manipulation_intf:sv <0x1fd1870a>
+			streams: 631, words: 1085968
+		worklib.cdns_uvm_pkg:sv <0x6046ad4b>
+			streams: 183, words: 393706
+		worklib.cdns_uvmapi:svp <0x7e44c525>
+			streams:  27, words: 46418
+		worklib.cdns_assert2uvm_pkg:sv <0x49fbb005>
+			streams:   3, words:  3144
+		worklib.uvm_pkg:sv <0x6ceedd5d>
+			streams: 5407, words: 12202663
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                        Instances  Unique
+		Modules:                        9       7
+		Interfaces:                     1       1
+		Verilog packages:               5       5
+		Registers:                 14,024  10,294
+		Scalar wires:                  58       -
+		Expanded wires:                62       3
+		Vectored wires:                52       -
+		Named events:                   4      12
+		Always blocks:                  5       4
+		Initial blocks:               282     156
+		Clocking blocks:                2       2
+		Clocking items:                18      18
+		Parallel blocks:               27      28
+		Cont. assignments:             50     103
+		Pseudo assignments:            24       -
+		Assertions:                     2       2
+		Compilation units:              1       1
+		SV Class declarations:        197     311
+		SV Class specializations:     378     378
+		Process Clocks:                 2       1
+		Simulation timescale:         1ps
+	Writing initial simulation snapshot: worklib.bmu_tb_top:sv
+	Parallel LWD Data Generation
+	Generating Debug Data:
+		LWD Database path: (/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim/xcelium.d/worklib/bmu_tb_top/sv/debug_db/bmu_tb_top)
+		Power Aware Instances:                    0
+		Liberty Instances:                        0
+		Out Of Module References:               184
+		Assertions:                               2
+		Liberty Information:
+			PG Pins:	                  0
+			Liberty Pins:	                  0
+Loading snapshot worklib.bmu_tb_top:sv .................... Done
+SVSEED default: 1
+xcelium> source /usr/cadence/installs/XCELIUM2503/tools/xcelium/files/xmsimrc
+xcelium> source /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (25.03-s006)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test dut_base_test...
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 5000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 5000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 15000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 15000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 25000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 25000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 35000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 35000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 45000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 45000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 55000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 55000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 65000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 65000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 75000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 75000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 85000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 85000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 95000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 95000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 100000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(254) @ 100000: uvm_test_top.m_env.m_scoreboard [SCB_SUMMARY] Inputs=0 Outputs=0 Checked=0 Mismatches=0 InQ=0 OutQ=0
+UVM_INFO ../tb/tests/dut_base_test.sv(35) @ 100000: uvm_test_top [dut_base_test] ---------------------------------------
+UVM_INFO ../tb/tests/dut_base_test.sv(36) @ 100000: uvm_test_top [dut_base_test] ----           TEST PASS           ----
+UVM_INFO ../tb/tests/dut_base_test.sv(37) @ 100000: uvm_test_top [dut_base_test] ---------------------------------------
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   17
+UVM_WARNING :   10
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[MON_OUT]    10
+[RNTST]     2
+[SCB_SUMMARY]     1
+[SCB_WRITE]    10
+[TEST_DONE]     1
+[dut_base_test]     3
+Simulation complete via $finish(1) at time 100 NS + 44
+/usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> exit
+TOOL:	xrun(64)	25.03-s006: Exiting on Dec 21, 2025 at 11:14:56 EET  (total: 00:00:04)

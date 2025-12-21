@@ -1,0 +1,17 @@
+lwd_dir /home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim/xcelium.d/worklib/bmu_tb_top/sv/debug_db/bmu_tb_top/../..
+snapshot_name worklib.bmu_tb_top:sv
+cells 1
+hostname orionvtech
+work_directory /home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim
+autofetch 0
+persistent_sources 0
+cdslib ./xcelium.d/run.lnx8664.25.03.d/cds.lib
+cds_implicit_tmplib worklib
+hdlvar ./xcelium.d/run.lnx8664.25.03.d/hdl.var
+platform x86_64
+bits 64
+du-agent YES
+xprop 0
+automsie 0
+xmclone 0
+cds_libs /home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim/xcelium.d/run.lnx8664.25.03.d/cds.lib /home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim/xcelium.d/run.lnx8664.25.03.d/cdsrun.lib /usr/cadence/installs/XCELIUM2503/tools/inca/files/cds.lib /usr/cadence/installs/XCELIUM2503/tools/inca/files/cdsvhdl.lib /usr/cadence/installs/XCELIUM2503/tools/inca/files/cdsvlog.lib /usr/cadence/installs/XCELIUM2503/tools/transrecord/files/cds.lib /usr/cadence/installs/XCELIUM2503/tools/affirma_ams/etc/connect_lib/cds.lib /usr/cadence/installs/XCELIUM2503/tools/affirma_ams/etc/dms/cds.lib

@@ -1,14 +1,12 @@
 // Top-level testbench for BMU verification
 
 `timescale 1ns/1ps
-
 module bmu_tb_top;
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
 
   import rtl_pkg::*; 
-  
   // Clock generation
   logic clk;
 
@@ -47,6 +45,9 @@ module bmu_tb_top;
     bmu_if.b_in          = '0;
     #50;
     bmu_if.rst_l = 1;
+  end
+  initial begin
+    run_test("dut_base_test");
   end
 
   // UVM start

@@ -6,15 +6,11 @@ xrun -64 \
      -top bmu_tb_top \
      -access +rwc \
      +incdir+tb/pkg \
-     +incdir+tb/interfaces \
+     +incdir+tb/interface \
      +incdir+rtl \
      -lwdgen \
      -classlinedebug \
      -enable_tpe \
      -ext_src_info \
      -ext_macro_src_info \
-     -coverage all \
-     -covoverwrite \
-     -covworkdir cov_work \
      +UVM_USE_COLOR
-     

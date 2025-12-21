@@ -1,0 +1,19 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/rtl/rtl_defines.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/rtl/rtl_pdef.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/rtl/rtl_def.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/rtl/rtl_lib.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/rtl/Bit_Manipulation_Unit.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/agent/sequencer/transaction.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/agent/sequencer/dut_sequencer.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/agent/monitor/dut_monitor.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/agent/driver/dut_driver.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/agent/dut_agent.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/scoreboard/dut_scoreboard.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/env/dut_env.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/tests/dut_base_test.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/interface/Bit_Manipulation_intf.sv
+/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/tb/top_tb.sv

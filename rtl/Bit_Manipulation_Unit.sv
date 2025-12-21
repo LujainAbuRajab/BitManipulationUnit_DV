@@ -1,6 +1,6 @@
 module Bit_Manipulation_Unit
   import rtl_pkg::*;
-  #(`include "library/rtl_param.vh")
+  #(`include "../rtl/library/rtl_param.vh")
  (
     input logic clk,       // Top level clock
     input logic rst_l,     // Reset

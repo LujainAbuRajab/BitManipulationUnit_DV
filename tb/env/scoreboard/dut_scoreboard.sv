@@ -68,8 +68,8 @@ class dut_scoreboard extends uvm_scoreboard;
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
     // Bind analysis_imp callbacks explicitly
-    in_imp.set_imp(this, "write_in");
-    out_imp.set_imp(this, "write_out");
+    // in_imp.set_imp(this, "write_in");         // [Naser.t] : you connect the analysis port in the enviroment , no need for this 
+    // out_imp.set_imp(this, "write_out");
   endfunction
 
   // Checking (FIFO match; no latency assumption)
