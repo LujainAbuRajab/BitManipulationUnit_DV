@@ -1,29 +1,28 @@
 `timescale 1ns/1ps
-`ifndef BMU_BITMANIP_ERR_SEQ_SV
-`define BMU_BITMANIP_ERR_SEQ_SV
+`ifndef BITMANIP_ERR_SEQ_SV
+`define BITMANIP_ERR_SEQ_SV
 
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
-
+`include "base_seq.sv"
+`include "base_seq_item.sv"
 // ----------------------------------------------------------
 // BMU Bit Manipulation Error / Guard Sequence
 // Covers ONLY illegal / error cases per spec
 // ----------------------------------------------------------
-class bmu_bitmanip_err_seq extends bmu_base_seq;
-  `uvm_object_utils(bmu_bitmanip_err_seq)
+class bitmanip_err_seq extends base_seq;
+  `uvm_object_utils(bitmanip_err_seq)
 
-  function new(string name="bmu_bitmanip_err_seq");
+  function new(string name="bitmanip_err_seq");
     super.new(name);
   endfunction
 
   task send_err(string name, rtl_alu_pkt_t ap_cfg,
                 bit csr=0, logic [31:0] a='0, logic [31:0] b='0);
-    bmu_seq_item tr;
-    tr = bmu_seq_item::type_id::create(name);
+    base_seq_item tr;
+    tr = base_seq_item::type_id::create(name);
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in= csr;
@@ -36,7 +35,7 @@ class bmu_bitmanip_err_seq extends bmu_base_seq;
   task body();
     rtl_alu_pkt_t ap;
 
-    `uvm_info("BMU_BITMANIP_ERR_SEQ",
+    `uvm_info("BITMANIP_ERR_SEQ",
               "Starting Bit-Manipulation error sequence", UVM_LOW)
 
     // --------------------------------------------------
@@ -93,7 +92,7 @@ class bmu_bitmanip_err_seq extends bmu_base_seq;
     ap='1;
     send_err("err_bitmanip_all_on", ap);
 
-    `uvm_info("BMU_BITMANIP_ERR_SEQ",
+    `uvm_info("BITMANIP_ERR_SEQ",
               "Finished Bit-Manipulation error sequence", UVM_LOW)
   endtask
 
