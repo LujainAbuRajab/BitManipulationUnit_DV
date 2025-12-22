@@ -6,7 +6,7 @@ import uvm_pkg::*;
 
 import rtl_pkg::*;
 
-class bmu_transaction extends uvm_sequence_item;
+class bmu_transaction extends uvm_sequence_item; //.
 
   // DUT-visible fields (inputs only)
   rand logic signed [31:0] a_in;
@@ -104,7 +104,7 @@ class bmu_transaction extends uvm_sequence_item;
   }
 
   // Constructor
-  function new(string name = "bmu_transaction");
+  function new(string name = "bmu_transaction"); //.
     super.new(name);
   endfunction
 
@@ -122,7 +122,7 @@ class bmu_transaction extends uvm_sequence_item;
   endfunction
 
   // UVM automation
-  `uvm_object_utils_begin(bmu_transaction)
+  `uvm_object_utils_begin(bmu_transaction) //.
     `uvm_field_int(dut_result,     UVM_ALL_ON)
     `uvm_field_int(dut_error,      UVM_ALL_ON)
     `uvm_field_int(a_in,           UVM_ALL_ON)
@@ -134,4 +134,4 @@ class bmu_transaction extends uvm_sequence_item;
     `uvm_field_int(expect_error,   UVM_ALL_ON)
   `uvm_object_utils_end
 
-endclass : bmu_transaction
+endclass : bmu_transaction //.

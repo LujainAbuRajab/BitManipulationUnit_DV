@@ -8,7 +8,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 // BMU Logic Error / Guard Sequence
 // for guard / overlap / CSR conflict to OR/XOR
@@ -26,9 +26,9 @@ class bmu_logic_err_seq extends bmu_base_seq;
     bit csr_conflict,
     rtl_alu_pkt_t ap_cfg
   );
-    bmu_seq_item tr;
+    bmu_transaction tr;
 
-    tr = bmu_seq_item::type_id::create(name);
+    tr = bmu_transaction::type_id::create(name);
     start_item(tr);
 
     if (csr_conflict) begin

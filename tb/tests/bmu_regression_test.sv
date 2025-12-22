@@ -5,7 +5,7 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 
-`include "bmu_env.sv"
+`include "dut_env.sv"
 `include "bmu_regression_seq.sv"
 
 // BMU Regression Test: to test all BMU functionalities at once
@@ -13,7 +13,7 @@ class bmu_regression_test extends uvm_test;
 
   `uvm_component_utils(bmu_regression_test)
 
-  bmu_env             m_env;
+  dut_env             m_env;
   bmu_regression_seq  m_seq;
 
   function new(string name="bmu_regression_test",
@@ -23,7 +23,7 @@ class bmu_regression_test extends uvm_test;
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    m_env = bmu_env::type_id::create("m_env", this);
+    m_env = dut_env::type_id::create("m_env", this);
   endfunction
 
   task run_phase(uvm_phase phase);

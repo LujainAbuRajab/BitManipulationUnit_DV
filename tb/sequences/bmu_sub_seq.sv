@@ -7,7 +7,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 
 // Covers all LEGAL subtraction scenarios
@@ -19,12 +19,12 @@ class bmu_sub_seq extends bmu_base_seq;
   endfunction
 
   task body();
-    bmu_seq_item tr;
+    bmu_transaction tr;
 
     `uvm_info("BMU_SUB_SEQ", "Starting SUB functional sequence", UVM_LOW)
 
     // Case 0: Random positive subtraction
-    tr = bmu_seq_item::type_id::create("sub_random_pos");
+    tr = bmu_transaction::type_id::create("sub_random_pos");
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0;
@@ -34,7 +34,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 1: Negative result (a < b)
-    tr = bmu_seq_item::type_id::create("sub_negative");
+    tr = bmu_transaction::type_id::create("sub_negative");
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0;
@@ -44,7 +44,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 2: A = B → result = 0
-    tr = bmu_seq_item::type_id::create("sub_equal");
+    tr = bmu_transaction::type_id::create("sub_equal");
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0;
@@ -54,7 +54,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 3: Large operand difference
-    tr = bmu_seq_item::type_id::create("sub_large_diff");
+    tr = bmu_transaction::type_id::create("sub_large_diff");
     start_item(tr);
     tr.valid_in=1; tr.csr_ren_in=0;
     tr.a_in=32'h7FFF_FFFF;
@@ -63,7 +63,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 4: Underflow edge
-    tr = bmu_seq_item::type_id::create("sub_underflow");
+    tr = bmu_transaction::type_id::create("sub_underflow");
     start_item(tr);
     tr.valid_in=1; tr.csr_ren_in=0;
     tr.a_in=32'h8000_0000;
@@ -72,7 +72,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 5: Overflow edge
-    tr = bmu_seq_item::type_id::create("sub_overflow");
+    tr = bmu_transaction::type_id::create("sub_overflow");
     start_item(tr);
     tr.valid_in=1; tr.csr_ren_in=0;
     tr.a_in=32'h7FFF_FFFF;
@@ -81,7 +81,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 6: A = 0
-    tr = bmu_seq_item::type_id::create("sub_a_zero");
+    tr = bmu_transaction::type_id::create("sub_a_zero");
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in = 0;
@@ -93,7 +93,7 @@ class bmu_sub_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 7: B = 0
-    tr = bmu_seq_item::type_id::create("sub_b_zero");
+    tr = bmu_transaction::type_id::create("sub_b_zero");
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in = 0;

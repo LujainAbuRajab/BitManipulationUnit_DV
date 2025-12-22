@@ -18,7 +18,8 @@
 ../tb/env/dut_env.sv
 
 // Tests 
-../tb/tests/dut_base_test.sv
+../tb/sequences/bmu_logic_seq.sv
+../tb/tests/bmu_smoke_test.sv
 
 // Testbench files
 ../tb/interface/Bit_Manipulation_intf.sv

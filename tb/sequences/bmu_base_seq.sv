@@ -7,10 +7,10 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 // Base Sequence for BMU
-class bmu_base_seq extends uvm_sequence #(bmu_seq_item);
+class bmu_base_seq extends uvm_sequence #(bmu_transaction);
 
   // Factory registration
   `uvm_object_utils(bmu_base_seq)
@@ -23,16 +23,16 @@ class bmu_base_seq extends uvm_sequence #(bmu_seq_item);
   virtual task pre_randomize_hook();
   endtask
 
-  virtual task post_randomize_hook(bmu_seq_item req);
+  virtual task post_randomize_hook(bmu_transaction req);
   endtask
 
 
   // standard UVM sequence logic
   virtual task body();
-    bmu_seq_item req;
+    bmu_transaction req;
 
     // Create item
-    req = bmu_seq_item::type_id::create("req");
+    req = bmu_transaction::type_id::create("req");
 
     // Allow derived sequences to override behavior before randomization
     pre_randomize_hook();

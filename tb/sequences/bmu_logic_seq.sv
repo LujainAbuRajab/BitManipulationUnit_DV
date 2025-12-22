@@ -8,7 +8,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 
 // BMU Logic Functional Sequence that Covers: OR, OR inverted, XOR, XOR inverted
@@ -34,21 +34,21 @@ class bmu_logic_seq extends bmu_base_seq;
 
   // Run one logic op with multiple patterns
   task run_logic(string tag, bit is_or, bit inverted);
-    bmu_seq_item tr;
+    bmu_transaction tr;
 
     `uvm_info("BMU_LOGIC_SEQ",
       $sformatf("Starting %s (inverted=%0b)", tag, inverted),
       UVM_LOW)
 
     // Case 0: random A, B
-    tr = bmu_seq_item::type_id::create({tag,"_rand"});
+    tr = bmu_transaction::type_id::create({tag,"_rand"});
     start_item(tr);
     assert(tr.randomize() with { valid_in==1; csr_ren_in==0; });
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
 
     // Case 1: A = 0
-    tr = bmu_seq_item::type_id::create({tag,"_a0"});
+    tr = bmu_transaction::type_id::create({tag,"_a0"});
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0; a_in==32'h0;
@@ -57,7 +57,7 @@ class bmu_logic_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 2: A = all ones
-    tr = bmu_seq_item::type_id::create({tag,"_a1"});
+    tr = bmu_transaction::type_id::create({tag,"_a1"});
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0; a_in==32'hFFFF_FFFF;
@@ -66,7 +66,7 @@ class bmu_logic_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 3: A = B
-    tr = bmu_seq_item::type_id::create({tag,"_aeqb"});
+    tr = bmu_transaction::type_id::create({tag,"_aeqb"});
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1; csr_ren_in==0; a_in==b_in;
@@ -75,7 +75,7 @@ class bmu_logic_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 4: Edge MSB / LSB
-    tr = bmu_seq_item::type_id::create({tag,"_edge"});
+    tr = bmu_transaction::type_id::create({tag,"_edge"});
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in= 0;
@@ -85,7 +85,7 @@ class bmu_logic_seq extends bmu_base_seq;
     finish_item(tr);
 
     // Case 5: Alternating pattern
-    tr = bmu_seq_item::type_id::create({tag,"_alt"});
+    tr = bmu_transaction::type_id::create({tag,"_alt"});
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in= 0;
@@ -93,7 +93,7 @@ class bmu_logic_seq extends bmu_base_seq;
     tr.b_in      = 32'h5555_5555;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
-        tr = bmu_seq_item::type_id::create({tag,"_b0"});
+        tr = bmu_transaction::type_id::create({tag,"_b0"});
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in  = 0;
@@ -102,7 +102,7 @@ class bmu_logic_seq extends bmu_base_seq;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
 
-    tr = bmu_seq_item::type_id::create({tag,"_b1"});
+    tr = bmu_transaction::type_id::create({tag,"_b1"});
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in  = 0;
@@ -111,7 +111,7 @@ class bmu_logic_seq extends bmu_base_seq;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
 
-    tr = bmu_seq_item::type_id::create({tag,"_ball1"});
+    tr = bmu_transaction::type_id::create({tag,"_ball1"});
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in  = 0;
@@ -120,7 +120,7 @@ class bmu_logic_seq extends bmu_base_seq;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
 
-    tr = bmu_seq_item::type_id::create({tag,"_b_f0"});
+    tr = bmu_transaction::type_id::create({tag,"_b_f0"});
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in  = 0;
@@ -130,7 +130,7 @@ class bmu_logic_seq extends bmu_base_seq;
     finish_item(tr);
     
     // Case 7: All zeros / all ones pairs
-    tr = bmu_seq_item::type_id::create({tag,"_a0_b0"});
+    tr = bmu_transaction::type_id::create({tag,"_a0_b0"});
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in = 0;
@@ -139,7 +139,7 @@ class bmu_logic_seq extends bmu_base_seq;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
 
-    tr = bmu_seq_item::type_id::create({tag,"_a1_b1"});
+    tr = bmu_transaction::type_id::create({tag,"_a1_b1"});
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in = 0;

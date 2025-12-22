@@ -7,7 +7,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 // BMU CSR Functional Sequence (Legal cases only)
 class bmu_csr_seq extends bmu_base_seq;
@@ -18,13 +18,13 @@ class bmu_csr_seq extends bmu_base_seq;
   endfunction
 
   task body();
-    bmu_seq_item tr;
+    bmu_transaction tr;
 
     `uvm_info("BMU_CSR_SEQ", "Starting CSR functional sequence", UVM_LOW)
 
     // CSR Write – Immediate mode
     // result = b_in
-    tr = bmu_seq_item::type_id::create("csr_write_imm");
+    tr = bmu_transaction::type_id::create("csr_write_imm");
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in= 0;
@@ -37,7 +37,7 @@ class bmu_csr_seq extends bmu_base_seq;
 
     // CSR Write – Register mode
     // result = a_in
-    tr = bmu_seq_item::type_id::create("csr_write_reg");
+    tr = bmu_transaction::type_id::create("csr_write_reg");
     start_item(tr);
     tr.valid_in   = 1;
     tr.csr_ren_in= 0;

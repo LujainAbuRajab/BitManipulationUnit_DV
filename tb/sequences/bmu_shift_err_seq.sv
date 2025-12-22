@@ -6,7 +6,7 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 class bmu_shift_err_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_shift_err_seq)
@@ -16,8 +16,8 @@ class bmu_shift_err_seq extends bmu_base_seq;
   endfunction
 
   task send_err(string name, rtl_alu_pkt_t ap_cfg, bit csr=0);
-    bmu_seq_item tr;
-    tr=bmu_seq_item::type_id::create(name);
+    bmu_transaction tr;
+    tr=bmu_transaction::type_id::create(name);
     start_item(tr);
     assert(tr.randomize() with {valid_in==1; csr_ren_in==csr;});
     tr.ap=ap_cfg;

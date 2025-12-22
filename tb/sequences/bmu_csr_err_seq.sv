@@ -7,7 +7,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 // BMU CSR Error / Guard Sequence
 class bmu_csr_err_seq extends bmu_base_seq;
@@ -18,8 +18,8 @@ class bmu_csr_err_seq extends bmu_base_seq;
   endfunction
 
   task send_err(string name, rtl_alu_pkt_t ap_cfg, bit csr);
-    bmu_seq_item tr;
-    tr = bmu_seq_item::type_id::create(name);
+    bmu_transaction tr;
+    tr = bmu_transaction::type_id::create(name);
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in = csr;

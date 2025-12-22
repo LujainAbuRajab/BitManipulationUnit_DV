@@ -7,7 +7,7 @@ import uvm_pkg::*;
 import rtl_pkg::*;
 
 `include "bmu_base_seq.sv"
-`include "bmu_seq_item.sv"
+`include "bmu_transaction.sv"
 
 // Verifies illegal configurations & overlaps
 class bmu_sub_err_seq extends bmu_base_seq;
@@ -21,9 +21,9 @@ class bmu_sub_err_seq extends bmu_base_seq;
     string name,
     rtl_alu_pkt_t ap_cfg,
     bit csr_conflict = 0);
-    bmu_seq_item tr;
+    bmu_transaction tr;
 
-    tr = bmu_seq_item::type_id::create(name);
+    tr = bmu_transaction::type_id::create(name);
     start_item(tr);
     assert(tr.randomize() with {
       valid_in==1;

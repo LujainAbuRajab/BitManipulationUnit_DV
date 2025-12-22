@@ -1,6 +1,5 @@
 // Base UVM test for BMU verification
 
-
 class dut_base_test extends uvm_test;
 
   `uvm_component_utils(dut_base_test)
