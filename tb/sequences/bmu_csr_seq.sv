@@ -6,8 +6,8 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_base_seq.sv"
-`include "bmu_transaction.sv"
+// `include "bmu_base_seq.sv"
+// `include "transaction.sv"
 
 // BMU CSR Functional Sequence (Legal cases only)
 class bmu_csr_seq extends bmu_base_seq;

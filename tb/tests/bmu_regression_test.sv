@@ -5,8 +5,8 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 
-`include "dut_env.sv"
-`include "bmu_regression_seq.sv"
+// `include "dut_env.sv"
+// `include "bmu_regression_seq.sv"
 
 // BMU Regression Test: to test all BMU functionalities at once
 class bmu_regression_test extends uvm_test;

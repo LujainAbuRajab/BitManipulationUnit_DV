@@ -7,7 +7,7 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_transaction.sv"
+//`include "transaction.sv"
 
 // Base Sequence for BMU
 class bmu_base_seq extends uvm_sequence #(bmu_transaction);
@@ -25,7 +25,6 @@ class bmu_base_seq extends uvm_sequence #(bmu_transaction);
 
   virtual task post_randomize_hook(bmu_transaction req);
   endtask
-
 
   // standard UVM sequence logic
   virtual task body();

@@ -5,8 +5,8 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
-`include "bmu_base_seq.sv"
-`include "bmu_transaction.sv"
+// `include "bmu_base_seq.sv"
+// `include "transaction.sv"
 
 class bmu_shift_err_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_shift_err_seq)
