@@ -4,20 +4,19 @@ module bmu_tb_top;
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
-  import rtl_pkg::*;
 
+  import rtl_pkg::*; 
   logic clk;
 
-  // Clock generation
   initial begin
-    clk = 1'b0;
+    clk = 0;
     forever #5 clk = ~clk;
   end
 
   // Interface
   Bit_Manipulation_intf bmu_if (clk);
 
-  // DUT instantiation
+  // DUT
   Bit_Manipulation_Unit dut (
     .clk            (clk),
     .rst_l          (bmu_if.rst_l),
@@ -32,27 +31,29 @@ module bmu_tb_top;
     .error          (bmu_if.error)
   );
 
-  // Reset / static control signals
+  // Reset
   initial begin
-    bmu_if.rst_l          = 1'b0;
-    bmu_if.scan_mode      = 1'b0;   // SCAN MODE IS TB-LEVEL ONLY
-    bmu_if.valid_in       = 1'b0;
-    bmu_if.ap             = '0;
-    bmu_if.csr_ren_in     = 1'b0;
-    bmu_if.csr_rddata_in  = '0;
-    bmu_if.a_in           = '0;
-    bmu_if.b_in           = '0;
-
+    bmu_if.rst_l          = 0;
+    bmu_if.scan_mode     = 0;
+    bmu_if.valid_in      = 0;
+    bmu_if.ap            = '0;
+    bmu_if.csr_ren_in    = 0;
+    bmu_if.csr_rddata_in = '0;
+    bmu_if.a_in          = '0;
+    bmu_if.b_in          = '0;
     #50;
-    bmu_if.rst_l = 1'b1;
+    bmu_if.rst_l = 1;
+  end
+  initial begin
+    run_test("bmu_smoke_test");
   end
 
-  // UVM single entry point
+  // UVM start
   initial begin
     uvm_config_db#(virtual Bit_Manipulation_intf)::set(
       null, "*", "vif", bmu_if
     );
-    run_test("bmu_smoke_test");
+    run_test();
   end
 
 endmodule

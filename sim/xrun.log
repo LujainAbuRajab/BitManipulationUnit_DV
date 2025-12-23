@@ -1,5 +1,5 @@
 xrun(64): 25.03-s006: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	25.03-s006: Started on Dec 21, 2025 at 11:14:52 EET
+TOOL:	xrun(64)	25.03-s006: Started on Dec 23, 2025 at 16:25:53 EET
 xrun
 	-64
 	-sv
@@ -20,7 +20,8 @@ xrun
 		../tb/env/agent/dut_agent.sv
 		../tb/env/scoreboard/dut_scoreboard.sv
 		../tb/env/dut_env.sv
-		../tb/tests/dut_base_test.sv
+		../tb/sequences/bmu_base_seq.sv
+		../tb/tests/bmu_smoke_test.sv
 		../tb/interface/Bit_Manipulation_intf.sv
 		../tb/top_tb.sv
 	-top bmu_tb_top
@@ -39,8 +40,8 @@ xrun
 	+UVM_USE_COLOR
 
 Recompiling... reason: file '../tb/env/scoreboard/dut_scoreboard.sv' is newer than expected.
-	expected: Sun Dec 21 10:38:28 2025
-	actual:   Sun Dec 21 11:14:50 2025
+	expected: Tue Dec 23 16:19:52 2025
+	actual:   Tue Dec 23 16:25:51 2025
 Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d
 xmvlog: *W,NOTIND: unable to access -INCDIR ../dut (No such file or directory).
 xmvlog: *W,NOTIND: unable to access -INCDIR tb/pkg (No such file or directory).
@@ -55,9 +56,21 @@ xmvlog: *W,NOINUF (../rtl/Bit_Manipulation_Unit.sv,3|11): `include directive not
 xmvlog: *W,NOINUF (../rtl/Bit_Manipulation_Unit.sv,3|41): `include directive not isolated on its own line [16.5(IEEE)].
 file: ../tb/env/scoreboard/dut_scoreboard.sv
 file: ../tb/top_tb.sv
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,0);
+                     |
+xmvlog: *W,BADTIF (../tb/env/scoreboard/dut_scoreboard.sv,130|21): a function cannot enable a task [10.3.4(IEEE)].
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,1);
+                     |
+xmvlog: *W,BADTIF (../tb/env/scoreboard/dut_scoreboard.sv,133|21): a function cannot enable a task [10.3.4(IEEE)].
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,1);
+                     |
+xmvlog: *W,BADTIF (../tb/env/scoreboard/dut_scoreboard.sv,139|21): a function cannot enable a task [10.3.4(IEEE)].
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,0);
+                     |
+xmvlog: *W,BADTIF (../tb/env/scoreboard/dut_scoreboard.sv,145|21): a function cannot enable a task [10.3.4(IEEE)].
 xmvlog: *W,SPDUSD: Include directory ../tb given but not used.
 	Total errors/warnings found outside modules and primitives:
-		errors: 0, warnings: 5
+		errors: 0, warnings: 9
 	Elaborating the design hierarchy:
 		Caching library 'worklib' ....... Done
 	Top level design units:
@@ -66,36 +79,40 @@ xmvlog: *W,SPDUSD: Include directory ../tb given but not used.
 		cdns_uvmapi
 		cdns_assert2uvm_pkg
 		cdns_uvm_pkg
-		$unit_0x623b9d7c
+		$unit_0x1db996ce
 		bmu_tb_top
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,0);
+                     |
+xmelab: *W,NOTVFW (../tb/env/scoreboard/dut_scoreboard.sv,130|21): Expecting a SystemVerilog void function name. The task 'print_topology' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,1);
+                     |
+xmelab: *W,NOTVFW (../tb/env/scoreboard/dut_scoreboard.sv,133|21): Expecting a SystemVerilog void function name. The task 'print_topology' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,1);
+                     |
+xmelab: *W,NOTVFW (../tb/env/scoreboard/dut_scoreboard.sv,139|21): Expecting a SystemVerilog void function name. The task 'print_topology' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,0);
+                     |
+xmelab: *W,NOTVFW (../tb/env/scoreboard/dut_scoreboard.sv,145|21): Expecting a SystemVerilog void function name. The task 'print_topology' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.rvbradder:sv <0x693b50d0>
+		worklib.rvbradder:sv <0x143042a6>
 			streams:   4, words:  1647
-		worklib.rvdff:sv <0x4452db26>
+		worklib.rvdff:sv <0x5e68c39f>
 			streams:   3, words:   818
-		worklib.rvdffs:sv <0x0104b1fd>
+		worklib.rvdffs:sv <0x71d39b6e>
 			streams:   2, words:   603
-		worklib.rvdffe:sv <0x7de86652>
+		worklib.rvdffe:sv <0x01c3a8ec>
 			streams:   1, words:   375
-		worklib.rvdff:sv <0x3b73d7e0>
+		worklib.rvdff:sv <0x2149cf59>
 			streams:   3, words:   868
-		worklib.rvdffs:sv <0x2df1df16>
+		worklib.rvdffs:sv <0x5d26f585>
 			streams:   2, words:   635
-		worklib.rvdffpcie:sv <0x5d45d2b1>
+		worklib.rvdffpcie:sv <0x2e10d479>
 			streams:   1, words:   393
-		worklib.Bit_Manipulation_Unit:sv <0x0b7824f3>
+		worklib.Bit_Manipulation_Unit:sv <0x01eec674>
 			streams:  56, words: 32658
-		worklib.Bit_Manipulation_intf:sv <0x1fd1870a>
-			streams: 631, words: 1085968
-		worklib.cdns_uvm_pkg:sv <0x6046ad4b>
-			streams: 183, words: 393706
-		worklib.cdns_uvmapi:svp <0x7e44c525>
-			streams:  27, words: 46418
-		worklib.cdns_assert2uvm_pkg:sv <0x49fbb005>
-			streams:   3, words:  3144
-		worklib.uvm_pkg:sv <0x6ceedd5d>
-			streams: 5407, words: 12202663
+		worklib.Bit_Manipulation_intf:sv <0x4f5bdcf9>
+			streams: 664, words: 1161417
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -103,22 +120,22 @@ xmvlog: *W,SPDUSD: Include directory ../tb given but not used.
 		Modules:                        9       7
 		Interfaces:                     1       1
 		Verilog packages:               5       5
-		Registers:                 14,024  10,294
+		Registers:                 14,082  10,315
 		Scalar wires:                  58       -
 		Expanded wires:                62       3
 		Vectored wires:                52       -
 		Named events:                   4      12
 		Always blocks:                  5       4
-		Initial blocks:               282     156
+		Initial blocks:               285     157
 		Clocking blocks:                2       2
 		Clocking items:                18      18
-		Parallel blocks:               27      28
+		Parallel blocks:               26      27
 		Cont. assignments:             50     103
 		Pseudo assignments:            24       -
 		Assertions:                     2       2
 		Compilation units:              1       1
-		SV Class declarations:        197     311
-		SV Class specializations:     378     378
+		SV Class declarations:        198     312
+		SV Class specializations:     381     381
 		Process Clocks:                 2       1
 		Simulation timescale:         1ps
 	Writing initial simulation snapshot: worklib.bmu_tb_top:sv
@@ -127,7 +144,7 @@ xmvlog: *W,SPDUSD: Include directory ../tb given but not used.
 		LWD Database path: (/home/ntayeh/naser/training/project/lujain/BitManipulationUnit_DV/sim/xcelium.d/worklib/bmu_tb_top/sv/debug_db/bmu_tb_top)
 		Power Aware Instances:                    0
 		Liberty Instances:                        0
-		Out Of Module References:               184
+		Out Of Module References:               185
 		Assertions:                               2
 		Liberty Information:
 			PG Pins:	                  0
@@ -157,33 +174,42 @@ CDNS-UVM-1.1d (25.03-s006)
 
       (Specify +UVM_NO_RELNOTES to turn off this notice)
 
-UVM_INFO @ 0: reporter [RNTST] Running test dut_base_test...
+UVM_INFO @ 0: reporter [RNTST] Running test bmu_smoke_test...
 UVM_INFO @ 0: reporter [RNTST] Running test ...
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 5000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 5000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 15000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 15000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 25000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 25000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 35000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 35000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 45000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 45000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 55000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 55000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 65000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 65000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 75000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 75000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 85000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 85000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO ../tb/env/agent/monitor/dut_monitor.sv(89) @ 95000: uvm_test_top.m_env.m_agent.m_monitor [MON_OUT] Captured OUTPUT event: result=0x00000000 error=0
-UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(44) @ 95000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
-UVM_INFO /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 100000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(254) @ 100000: uvm_test_top.m_env.m_scoreboard [SCB_SUMMARY] Inputs=0 Outputs=0 Checked=0 Mismatches=0 InQ=0 OutQ=0
-UVM_INFO ../tb/tests/dut_base_test.sv(35) @ 100000: uvm_test_top [dut_base_test] ---------------------------------------
-UVM_INFO ../tb/tests/dut_base_test.sv(36) @ 100000: uvm_test_top [dut_base_test] ----           TEST PASS           ----
-UVM_INFO ../tb/tests/dut_base_test.sv(37) @ 100000: uvm_test_top [dut_base_test] ---------------------------------------
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(46) @ 5000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(110) @ 5000: uvm_test_top.m_env.m_scoreboard [inside try_check function] 
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(114) @ 5000: uvm_test_top.m_env.m_scoreboard [inside while loop] 
+UVM_ERROR ../tb/env/scoreboard/dut_scoreboard.sv(93) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] X------------TEST FAILED------------X
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(94) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |------      in_t.dut_error
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(95) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(96) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_actual = 0
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(97) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_expected = 1
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(98) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(99) @ 5000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] *-----------------------------------*
+UVM_INFO ../tb/env/agent/driver/dut_driver.sv(35) @ 5000: uvm_test_top.m_env.m_agent.m_driver [DRV] Driving transaction: BMU_TXN: op=0 valid=1 csr_ren=0 a=0xd5b8671f b=0x73d6f7f8 expect_error=0
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(46) @ 15000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(110) @ 15000: uvm_test_top.m_env.m_scoreboard [inside try_check function] 
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(114) @ 15000: uvm_test_top.m_env.m_scoreboard [inside while loop] 
+UVM_ERROR ../tb/env/scoreboard/dut_scoreboard.sv(93) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] X------------TEST FAILED------------X
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(94) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |------      in_t.dut_error
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(95) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(96) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_actual = 0
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(97) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_expected = 1
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(98) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(99) @ 15000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] *-----------------------------------*
+UVM_WARNING ../tb/env/scoreboard/dut_scoreboard.sv(46) @ 25000: uvm_test_top.m_env.m_scoreboard [SCB_WRITE] Default write() called; expected write_in/write_out dispatch.
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(110) @ 25000: uvm_test_top.m_env.m_scoreboard [inside try_check function] 
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(114) @ 25000: uvm_test_top.m_env.m_scoreboard [inside while loop] 
+UVM_ERROR ../tb/env/scoreboard/dut_scoreboard.sv(93) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] X------------TEST FAILED------------X
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(94) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |------      in_t.dut_error
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(95) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(96) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_actual = 0
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(97) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] | in_t.dut_error_expected = 1
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(98) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] |*************************************
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(99) @ 25000: uvm_test_top.m_env.m_scoreboard [dut_scoreboard] *-----------------------------------*
+UVM_INFO ../tb/sequences/bmu_base_seq.sv(52) @ 25000: uvm_test_top.m_env.m_agent.m_sequencer@@seq [BMU_BASE_SEQ] One BMU transaction executed
+UVM_INFO /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 25000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO ../tb/env/scoreboard/dut_scoreboard.sv(293) @ 25000: uvm_test_top.m_env.m_scoreboard [SCB_SUMMARY] Inputs=3 Outputs=0 Checked=3 Mismatches=3 InQ=0 OutQ=0
 
 --- UVM Report catcher Summary ---
 
@@ -198,18 +224,21 @@ Number of caught UVM_WARNING reports :    0
 --- UVM Report Summary ---
 
 ** Report counts by severity
-UVM_INFO :   17
-UVM_WARNING :   10
-UVM_ERROR :    0
+UVM_INFO :   30
+UVM_WARNING :    3
+UVM_ERROR :    3
 UVM_FATAL :    0
 ** Report counts by id
-[MON_OUT]    10
+[BMU_BASE_SEQ]     1
+[DRV]     1
 [RNTST]     2
 [SCB_SUMMARY]     1
-[SCB_WRITE]    10
+[SCB_WRITE]     3
 [TEST_DONE]     1
-[dut_base_test]     3
-Simulation complete via $finish(1) at time 100 NS + 44
+[dut_scoreboard]    21
+[inside try_check function]     3
+[inside while loop]     3
+Simulation complete via $finish(1) at time 25 NS + 50
 /usr/cadence/installs/XCELIUM2503/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
 xcelium> exit
-TOOL:	xrun(64)	25.03-s006: Exiting on Dec 21, 2025 at 11:14:56 EET  (total: 00:00:04)
+TOOL:	xrun(64)	25.03-s006: Exiting on Dec 23, 2025 at 16:25:55 EET  (total: 00:00:02)

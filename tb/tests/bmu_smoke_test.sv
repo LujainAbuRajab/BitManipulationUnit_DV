@@ -7,13 +7,17 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+//`include "dut_sequencer.sv"
+//`include "dut_driver.sv"
+//`include "bmu_base_seq.sv" //===
+
 // Simple smoke test: sequencer + driver only, no agent/env
 class bmu_smoke_test extends uvm_test;
 
   `uvm_component_utils(bmu_smoke_test)
 
   dut_env       m_env;
-  bmu_logic_seq seq; //==
+  bmu_base_seq seq; //==
 
   function new(string name = "bmu_smoke_test", uvm_component parent = null);
     super.new(name, parent);
@@ -28,7 +32,7 @@ class bmu_smoke_test extends uvm_test;
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
 
-    seq = bmu_logic_seq::type_id::create("seq");//==
+    seq = bmu_base_seq::type_id::create("seq");//==
  
     // Run sequence on agent sequencer
     seq.start(m_env.m_agent.m_sequencer);

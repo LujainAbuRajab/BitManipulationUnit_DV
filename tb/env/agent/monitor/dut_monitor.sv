@@ -14,7 +14,7 @@ class dut_monitor extends uvm_monitor;
   uvm_analysis_port #(bmu_transaction) input_ap;
   uvm_analysis_port #(bmu_transaction) output_ap;
 
-
+  bmu_transaction tr;
   // Constructor
   function new(string name = "dut_monitor", uvm_component parent = null);
     super.new(name, parent);
@@ -36,10 +36,25 @@ class dut_monitor extends uvm_monitor;
 
   // Run phase
   task run_phase(uvm_phase phase);
-    fork
-      monitor_inputs();
-      monitor_outputs();
-    join
+    super.run_phase(phase);
+    `uvm_info(get_type_name(), "Monitor: Started monitoring DUT Output Signals", UVM_HIGH)
+      forever begin
+          tr = bmu_transaction::type_id::create("item");
+
+          @(vif.mon_cb);
+          // tr.rst_l         = vif.mon_cb.rst_l;
+          // tr.scan_mode     = vif.mon_cb.scan_mode;
+          tr.valid_in      = vif.mon_cb.valid_in;
+          tr.ap            = vif.mon_cb.ap;
+          tr.csr_ren_in    = vif.mon_cb.csr_ren_in;
+          tr.csr_rddata_in = vif.mon_cb.csr_rddata_in;
+          tr.a_in          = vif.mon_cb.a_in;
+          tr.b_in          = vif.mon_cb.b_in;
+          tr.dut_result     = vif.mon_cb.result_ff;
+          tr.dut_error         = vif.mon_cb.error;
+
+          input_ap.write(tr);
+      end
   endtask
 
   // Monitor input transactions (valid_in based)

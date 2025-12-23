@@ -48,3 +48,61 @@ s23(21Dec2025:11:13:34):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top
 s24(21Dec2025:11:13:56):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
 #e25(21Dec2025:11:14:53): source ./xcelium.d/env.d/env.history.21Dec2025_11_14_53
 s25(21Dec2025:11:14:53):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e26(23Dec2025:14:55:57): source ./xcelium.d/env.d/env.history.23Dec2025_14_55_57
+s26(23Dec2025:14:55:57):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e27(23Dec2025:15:02:08): source ./xcelium.d/env.d/env.history.23Dec2025_15_02_08
+s27(23Dec2025:15:02:08):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e28(23Dec2025:15:53:19): source ./xcelium.d/env.d/env.history.23Dec2025_15_53_19
+s28(23Dec2025:15:53:19):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e29(23Dec2025:15:58:11): source ./xcelium.d/env.d/env.history.23Dec2025_15_58_11
+s29(23Dec2025:15:58:11):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e30(23Dec2025:15:59:08): source ./xcelium.d/env.d/env.history.23Dec2025_15_59_08
+s30(23Dec2025:15:59:08):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e31(23Dec2025:16:01:01): source ./xcelium.d/env.d/env.history.23Dec2025_16_01_01
+s31(23Dec2025:16:01:01):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e32(23Dec2025:16:05:21): source ./xcelium.d/env.d/env.history.23Dec2025_16_05_21
+s32(23Dec2025:16:05:21):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e33(23Dec2025:16:05:25): source ./xcelium.d/env.d/env.history.23Dec2025_16_05_25
+s33(23Dec2025:16:05:25):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e34(23Dec2025:16:05:52): source ./xcelium.d/env.d/env.history.23Dec2025_16_05_52
+s34(23Dec2025:16:05:52):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e35(23Dec2025:16:06:07): source ./xcelium.d/env.d/env.history.23Dec2025_16_06_07
+s35(23Dec2025:16:06:07):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e36(23Dec2025:16:06:53): source ./xcelium.d/env.d/env.history.23Dec2025_16_06_53
+s36(23Dec2025:16:06:53):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e37(23Dec2025:16:07:52): source ./xcelium.d/env.d/env.history.23Dec2025_16_07_52
+s37(23Dec2025:16:07:52):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e38(23Dec2025:16:08:14): source ./xcelium.d/env.d/env.history.23Dec2025_16_08_14
+s38(23Dec2025:16:08:14):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e39(23Dec2025:16:09:44): source ./xcelium.d/env.d/env.history.23Dec2025_16_09_44
+s39(23Dec2025:16:09:44):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e40(23Dec2025:16:11:15): source ./xcelium.d/env.d/env.history.23Dec2025_16_11_15
+s40(23Dec2025:16:11:15):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e41(23Dec2025:16:12:19): source ./xcelium.d/env.d/env.history.23Dec2025_16_12_19
+s41(23Dec2025:16:12:19):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e42(23Dec2025:16:12:37): source ./xcelium.d/env.d/env.history.23Dec2025_16_12_37
+s42(23Dec2025:16:12:37):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e43(23Dec2025:16:12:51): source ./xcelium.d/env.d/env.history.23Dec2025_16_12_51
+s43(23Dec2025:16:12:51):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e44(23Dec2025:16:13:38): source ./xcelium.d/env.d/env.history.23Dec2025_16_13_38
+s44(23Dec2025:16:13:38):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e45(23Dec2025:16:15:20): source ./xcelium.d/env.d/env.history.23Dec2025_16_15_20
+s45(23Dec2025:16:15:20):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e46(23Dec2025:16:15:48): source ./xcelium.d/env.d/env.history.23Dec2025_16_15_48
+s46(23Dec2025:16:15:48):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e47(23Dec2025:16:16:26): source ./xcelium.d/env.d/env.history.23Dec2025_16_16_26
+s47(23Dec2025:16:16:26):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e48(23Dec2025:16:17:07): source ./xcelium.d/env.d/env.history.23Dec2025_16_17_07
+s48(23Dec2025:16:17:07):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e49(23Dec2025:16:17:41): source ./xcelium.d/env.d/env.history.23Dec2025_16_17_41
+s49(23Dec2025:16:17:41):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e50(23Dec2025:16:18:41): source ./xcelium.d/env.d/env.history.23Dec2025_16_18_41
+s50(23Dec2025:16:18:41):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e51(23Dec2025:16:19:38): source ./xcelium.d/env.d/env.history.23Dec2025_16_19_38
+s51(23Dec2025:16:19:38):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e52(23Dec2025:16:19:54): source ./xcelium.d/env.d/env.history.23Dec2025_16_19_54
+s52(23Dec2025:16:19:54):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e53(23Dec2025:16:25:53): source ./xcelium.d/env.d/env.history.23Dec2025_16_25_53
+s53(23Dec2025:16:25:53):  xrun -64 -sv -uvm -timescale 1ns/1ps -f compile.f -top bmu_tb_top -access +rwc +incdir+tb/pkg +incdir+tb/interface +incdir+rtl -lwdgen -classlinedebug -enable_tpe -ext_src_info -ext_macro_src_info +UVM_USE_COLOR 
+#e54(23Dec2025:16:32:32): source ./xcelium.d/env.d/env.history.23Dec2025_16_32_32
+s54(23Dec2025:16:32:32):  xrun -clean 
