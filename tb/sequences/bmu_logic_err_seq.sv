@@ -7,11 +7,8 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_base_seq.sv"
-`include "bmu_transaction.sv"
-
 // BMU Logic Error / Guard Sequence
-// for guard / overlap / CSR conflict to OR/XOR
+// Generates illegal / overlap / CSR conflict cases intentionally
 class bmu_logic_err_seq extends bmu_base_seq;
 
   `uvm_object_utils(bmu_logic_err_seq)
@@ -20,7 +17,7 @@ class bmu_logic_err_seq extends bmu_base_seq;
     super.new(name);
   endfunction
 
-  // Helper لتقليل التكرار
+  // Helper to reduce repetition
   task automatic send_err_case(
     string name,
     bit csr_conflict,
@@ -29,22 +26,38 @@ class bmu_logic_err_seq extends bmu_base_seq;
     bmu_transaction tr;
 
     tr = bmu_transaction::type_id::create(name);
+
     start_item(tr);
 
+    // Randomize only the fields that are safe to randomize here.
+    // NOTE: We intentionally override tr.ap later (illegal overlaps).
     if (csr_conflict) begin
-      assert(tr.randomize() with { valid_in==1; csr_ren_in==1; });
+      if (!tr.randomize() with { valid_in == 1'b1; csr_ren_in == 1'b1; }) begin
+        `uvm_error("RANDFAIL", $sformatf("%s: randomize failed (csr_conflict=1)", name))
+        finish_item(tr);
+        return;
+      end
     end
     else begin
-      assert(tr.randomize() with { valid_in==1; csr_ren_in==0; });
+      if (!tr.randomize() with { valid_in == 1'b1; csr_ren_in == 1'b0; }) begin
+        `uvm_error("RANDFAIL", $sformatf("%s: randomize failed (csr_conflict=0)", name))
+        finish_item(tr);
+        return;
+      end
     end
 
+    // Force the illegal ap pattern AFTER randomize (bypasses onehot constraint)
     tr.ap = ap_cfg;
 
-    // Ensure no Xs on unrelated fields (optional but helpful)
-    tr.scan_mode     = 1'b0;
+    // Optional: keep deterministic values for other inputs
     tr.csr_rddata_in = '0;
 
     finish_item(tr);
+
+    `uvm_info("BMU_LOGIC_ERR_SEQ",
+              $sformatf("Sent error case '%s' csr_conflict=%0b ap=0x%0h",
+                        name, csr_conflict, ap_cfg),
+              UVM_LOW)
   endtask
 
   task body();
@@ -52,65 +65,68 @@ class bmu_logic_err_seq extends bmu_base_seq;
 
     `uvm_info("BMU_LOGIC_ERR_SEQ", "Starting Logic Error Sequence", UVM_LOW)
 
-    // Case 0: OR + XOR overlap 
+    // Case 0: OR + XOR overlap
     ap = '0;
-    ap.lor  = 1;
-    ap.lxor = 1;
-    ap.zbb  = 0;
-    send_err_case("err_or_and_xor_overlap", 0, ap);
+    ap.lor  = 1'b1;
+    ap.lxor = 1'b1;
+    ap.zbb  = 1'b0;
+    send_err_case("err_or_and_xor_overlap", 1'b0, ap);
 
-    // Case 1: OR + SH2ADD overlap 
+    // Case 1: OR + SH2ADD overlap
     ap = '0;
-    ap.lor    = 1;
-    ap.sh2add = 1;
-    send_err_case("err_or_and_sh2add_overlap", 0, ap);
-    
-    ap = '0;
-    ap.lor    = 1;
-    ap.sub = 1;
-    send_err_case("err_or_and_sub_overlap", 0, ap);
+    ap.lor    = 1'b1;
+    ap.sh2add = 1'b1;
+    send_err_case("err_or_and_sh2add_overlap", 1'b0, ap);
 
+    // Case 1b: OR + SUB overlap
     ap = '0;
-    ap.lxor    = 1;
-    ap.sh2add = 1;
-    send_err_case("err_xor_and_sh2add_overlap", 0, ap);
+    ap.lor = 1'b1;
+    ap.sub = 1'b1;
+    send_err_case("err_or_and_sub_overlap", 1'b0, ap);
 
-    // Case 2: XOR + SUB overlap 
+    // Case 1c: XOR + SH2ADD overlap
     ap = '0;
-    ap.lxor = 1;
-    ap.sub  = 1;
-    send_err_case("err_xor_and_sub_overlap", 0, ap);
+    ap.lxor   = 1'b1;
+    ap.sh2add = 1'b1;
+    send_err_case("err_xor_and_sh2add_overlap", 1'b0, ap);
+
+    // Case 2: XOR + SUB overlap
+    ap = '0;
+    ap.lxor = 1'b1;
+    ap.sub  = 1'b1;
+    send_err_case("err_xor_and_sub_overlap", 1'b0, ap);
 
     // Case 3: XOR + SRL overlap (Logic + Shift)
     ap = '0;
-    ap.lxor = 1;
-    ap.srl  = 1;
-    send_err_case("err_xor_and_srl_overlap", 0, ap);
+    ap.lxor = 1'b1;
+    ap.srl  = 1'b1;
+    send_err_case("err_xor_and_srl_overlap", 1'b0, ap);
 
     // Case 4: XOR + CTZ overlap (Logic + Bitcount)
     ap = '0;
-    ap.lxor = 1;
-    ap.ctz  = 1;
-    send_err_case("err_xor_and_ctz_overlap", 0, ap);
+    ap.lxor = 1'b1;
+    ap.ctz  = 1'b1;
+    send_err_case("err_xor_and_ctz_overlap", 1'b0, ap);
 
     // Case 5: CSR conflict with OR (csr_ren_in=1)
     ap = '0;
-    ap.lor = 1;
-    send_err_case("err_csr_conflict_or", 1, ap);
+    ap.lor = 1'b1;
+    send_err_case("err_csr_conflict_or", 1'b1, ap);
 
     // Case 6: CSR conflict with XOR (csr_ren_in=1)
     ap = '0;
-    ap.lxor = 1;
-    send_err_case("err_csr_conflict_xor", 1, ap);
+    ap.lxor = 1'b1;
+    send_err_case("err_csr_conflict_xor", 1'b1, ap);
 
     // Case 7: Everything ON (guard worst-case)
     ap = '1;
-    send_err_case("err_all_ap_bits_on", 0, ap);
-    
+    send_err_case("err_all_ap_bits_on", 1'b0, ap);
+
+    // Case 8: OR + SRL overlap
     ap = '0;
-    ap.lor = 1;
-    ap.srl = 1;
-    send_err_case("err_or_and_srl_overlap", 0, ap);
+    ap.lor = 1'b1;
+    ap.srl = 1'b1;
+    send_err_case("err_or_and_srl_overlap", 1'b0, ap);
 
     `uvm_info("BMU_LOGIC_ERR_SEQ", "Finished Logic Error Sequence", UVM_LOW)
   endtask

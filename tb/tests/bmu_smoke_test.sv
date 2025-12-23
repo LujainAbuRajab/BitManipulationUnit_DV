@@ -7,10 +7,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "dut_sequencer.sv"
-`include "dut_driver.sv"
-`include "bmu_logic_seq.sv" //===
-
 // Simple smoke test: sequencer + driver only, no agent/env
 class bmu_smoke_test extends uvm_test;
 

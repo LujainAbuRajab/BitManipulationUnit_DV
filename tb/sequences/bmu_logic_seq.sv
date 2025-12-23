@@ -7,10 +7,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_base_seq.sv"
-`include "bmu_transaction.sv"
-
-
 // BMU Logic Functional Sequence that Covers: OR, OR inverted, XOR, XOR inverted
 class bmu_logic_seq extends bmu_base_seq;
 

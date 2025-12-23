@@ -6,9 +6,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_base_seq.sv"
-`include "bmu_transaction.sv"
-
 
 // Covers ALL LEGAL bit-manipulation operations (per spec)
 class bmu_bitmanip_seq extends bmu_base_seq;

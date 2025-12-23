@@ -7,8 +7,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-`include "bmu_transaction.sv"
-
 // Base Sequence for BMU
 class bmu_base_seq extends uvm_sequence #(bmu_transaction);
 
