@@ -40,7 +40,7 @@ class dut_scoreboard extends uvm_scoreboard;
   // - write() for out_imp calls write_out()
   // -------------------------------------------------
 
-  // Xcelium/IEEE: analysis_imp calls write(T t)
+  // analysis_imp calls write(T t)
   function void write(bmu_transaction t);
     // This default should never be used because we bind to two imps.
     `uvm_warning("SCB_WRITE", "Default write() called; expected write_in/write_out dispatch.")

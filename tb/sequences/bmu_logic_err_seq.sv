@@ -7,9 +7,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-// `include "bmu_base_seq.sv"
-// `include "transaction.sv"
-
 // BMU Logic Error / Guard Sequence
 // for guard / overlap / CSR conflict to OR/XOR
 class bmu_logic_err_seq extends bmu_base_seq;

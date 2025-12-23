@@ -19,6 +19,7 @@
 
 // Tests 
 ../tb/sequences/bmu_base_seq.sv
+../tb/sequences/bmu_logic_seq.sv
 ../tb/tests/bmu_smoke_test.sv
 
 // Testbench files
