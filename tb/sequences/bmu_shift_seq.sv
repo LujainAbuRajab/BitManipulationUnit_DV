@@ -164,9 +164,7 @@ class bmu_shift_seq extends bmu_base_seq;
     tr.ap='0; tr.ap.binv=1;
     finish_item(tr);
 
-    // ==================================================
     // E. SH2ADD – Shift Left by 2 and Add
-    // ==================================================
     tr = bmu_transaction::type_id::create("sh2add_legal");
     start_item(tr);
     assert(tr.randomize() with {

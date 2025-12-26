@@ -28,9 +28,6 @@ class dut_monitor extends uvm_monitor;
     end
   endfunction
 
-  // -------------------------
-  // Run phase: fork monitors
-  // -------------------------
   task run_phase(uvm_phase phase);
     fork
       monitor_inputs();
@@ -38,9 +35,6 @@ class dut_monitor extends uvm_monitor;
     join
   endtask
 
-  // -------------------------
-  // Input monitor
-  // -------------------------
   task monitor_inputs();
     bmu_transaction tr;
     forever begin
@@ -59,9 +53,6 @@ class dut_monitor extends uvm_monitor;
     end
   endtask
 
-  // -------------------------
-  // Output monitor
-  // -------------------------
   task monitor_outputs();
     bmu_transaction tr;
     forever begin
