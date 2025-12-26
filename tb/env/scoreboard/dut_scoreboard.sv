@@ -77,7 +77,7 @@ class dut_scoreboard extends uvm_scoreboard;
     // in_imp.set_imp(this, "write_in");         // [Naser.t] : you connect the analysis port in the enviroment , no need for this 
     // out_imp.set_imp(this, "write_out");
   endfunction
-  task automatic print_topology(string signal_name, string expected , string actual, logic test_pass);
+  task automatic print_topology(string signal_name, string expected , string actual, logic test_pass, bmu_transaction t);
       if(test_pass)
       begin
         `uvm_info(get_type_name(), "*------------TEST PASSED-------------*", UVM_NONE)
@@ -85,6 +85,9 @@ class dut_scoreboard extends uvm_scoreboard;
         `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("| %s_actual = %s", signal_name, actual), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("| %s_expected = %s", signal_name, expected), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| a=0x%08h b=0x%08h valid=%0b", t.a_in, t.b_in, t.valid_in), UVM_NONE)
+       // `uvm_info(get_type_name(), $sformatf("| ap=%p", t.ap), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
         `uvm_info(get_type_name(), "*-----------------------------------*", UVM_NONE)
       end
@@ -95,6 +98,9 @@ class dut_scoreboard extends uvm_scoreboard;
         `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("| %s_actual = %s", signal_name, actual), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("| %s_expected = %s", signal_name, expected), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| a=0x%08h b=0x%08h valid=%0b", t.a_in, t.b_in, t.valid_in), UVM_NONE)
+        //`uvm_info(get_type_name(), $sformatf("| ap=%p", t.ap), UVM_NONE)
         `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
         `uvm_info(get_type_name(), "*-----------------------------------*", UVM_NONE)
       end
@@ -127,22 +133,22 @@ class dut_scoreboard extends uvm_scoreboard;
         //   $sformatf("Error mismatch. exp=%0b got=%0b | in=%s",
         //             exp_error, in_t.dut_error, in_t.convert2string()))
 
-        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,0);
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,0, in_t);
       end
         else 
-        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,1);
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,1, in_t);
 
       // Compare result only when not error (per DUT coding style)
       if (!exp_error) begin
         if (in_t.dut_result !== exp_result) begin
           num_mismatches++;
-        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,1);
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,1, in_t);
           // `uvm_error("SCB_RES_MISMATCH",
           //   $sformatf("Result mismatch. exp=0x%08h got=0x%08h | in=%s",
           //             exp_result, in_t.dut_result, in_t.convert2string()))
         end
         else 
-        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,0);
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,0, in_t);
       end
 
     end
