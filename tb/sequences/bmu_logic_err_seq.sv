@@ -37,7 +37,7 @@ class bmu_logic_err_seq extends bmu_base_seq;
 
   tr.ap = ap_cfg;
 
-  // Ensure no Xs on unrelated fields (optional but helpful)
+  // Ensure no Xs on unrelated fields
   tr.csr_rddata_in = '0;
 
   finish_item(tr);

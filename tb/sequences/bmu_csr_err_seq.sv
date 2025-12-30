@@ -6,9 +6,6 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
-// `include "bmu_base_seq.sv"
-// `include "transaction.sv"
-
 // BMU CSR Error / Guard Sequence
 class bmu_csr_err_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_csr_err_seq)

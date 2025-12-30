@@ -22,7 +22,7 @@ class bmu_transaction extends uvm_sequence_item; //.
   rand logic        [31:0] csr_rddata_in;
 
 
-  // Verification metadata (NOT driven to DUT)
+  // Verification metadata 
   typedef enum {
     OP_OR,
     OP_ORN,
@@ -52,7 +52,7 @@ class bmu_transaction extends uvm_sequence_item; //.
 
   bmu_op_t op_type;
 
-  // Expected classification (used by scoreboard later)
+  // Expected classification 
   bit expect_error;
 
   // Constraints
@@ -61,7 +61,7 @@ class bmu_transaction extends uvm_sequence_item; //.
     valid_in == 1'b1;
   }
 
-  // Default: no CSR access unless explicitly tested
+  // no CSR access unless explicitly tested
   constraint c_csr_default {
     csr_ren_in == 1'b0;
   }
