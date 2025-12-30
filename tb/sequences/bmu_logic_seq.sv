@@ -7,10 +7,13 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
 
+=======
+>>>>>>> fix-timing-work
 // BMU Logic Functional Sequence that Covers: OR, OR inverted, XOR, XOR inverted
 class bmu_logic_seq extends bmu_base_seq;
 
@@ -93,7 +96,9 @@ class bmu_logic_seq extends bmu_base_seq;
     tr.b_in      = 32'h5555_5555;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
-        tr = bmu_transaction::type_id::create({tag,"_b0"});
+
+    // Case 6: Specific bit patterns in B
+    tr = bmu_transaction::type_id::create({tag,"_b0"});
     start_item(tr);
     tr.valid_in    = 1;
     tr.csr_ren_in  = 0;
@@ -129,7 +134,7 @@ class bmu_logic_seq extends bmu_base_seq;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
     
-    // Case 7: All zeros / all ones pairs
+    // Case 7: All zeros / all ones 
     tr = bmu_transaction::type_id::create({tag,"_a0_b0"});
     start_item(tr);
     tr.valid_in   = 1;
@@ -147,7 +152,6 @@ class bmu_logic_seq extends bmu_base_seq;
     tr.b_in       = 32'hFFFF_FFFF;
     init_ap(tr.ap, is_or, inverted);
     finish_item(tr);
-
 
   endtask
 

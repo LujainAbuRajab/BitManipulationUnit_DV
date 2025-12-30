@@ -6,9 +6,12 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
+=======
+>>>>>>> fix-timing-work
 class bmu_shift_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_shift_seq)
 
@@ -164,9 +167,7 @@ class bmu_shift_seq extends bmu_base_seq;
     tr.ap='0; tr.ap.binv=1;
     finish_item(tr);
 
-    // ==================================================
     // E. SH2ADD – Shift Left by 2 and Add
-    // ==================================================
     tr = bmu_transaction::type_id::create("sh2add_legal");
     start_item(tr);
     assert(tr.randomize() with {

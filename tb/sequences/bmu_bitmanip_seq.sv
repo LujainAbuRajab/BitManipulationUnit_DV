@@ -9,7 +9,11 @@ import rtl_pkg::*;
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
+<<<<<<< HEAD
 // Covers ALL LEGAL bit-manipulation operations (per spec)
+=======
+// Covers ALL LEGAL bit-manipulation operations
+>>>>>>> fix-timing-work
 class bmu_bitmanip_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_bitmanip_seq)
 

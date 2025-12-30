@@ -5,6 +5,7 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 
+<<<<<<< HEAD
 // `include "bmu_logic_seq.sv"
 // `include "bmu_logic_err_seq.sv"
 // `include "bmu_shift_seq.sv"
@@ -16,6 +17,8 @@ import uvm_pkg::*;
 // `include "bmu_csr_seq.sv"
 // `include "bmu_csr_err_seq.sv"
 
+=======
+>>>>>>> fix-timing-work
 // Runs ALL functional + error sequences
 class bmu_regression_seq extends uvm_sequence #(uvm_sequence_item);
 

@@ -6,10 +6,13 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 //`include "bmu_base_seq.sv"
 //`include "transaction.sv"
 
 
+=======
+>>>>>>> fix-timing-work
 // Covers all LEGAL subtraction scenarios
 class bmu_sub_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_sub_seq)

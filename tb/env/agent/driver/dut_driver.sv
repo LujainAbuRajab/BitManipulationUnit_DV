@@ -9,7 +9,7 @@ class dut_driver extends uvm_driver #(bmu_transaction);
 
   `uvm_component_utils(dut_driver)
 
-  // Virtual interface handle (use full interface type for Xcelium robustness)
+  // Virtual interface handle
   virtual Bit_Manipulation_intf vif;
 
   function new(string name = "dut_driver", uvm_component parent = null);

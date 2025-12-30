@@ -6,10 +6,14 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
 // BMU CSR Functional Sequence (Legal cases only)
+=======
+// BMU CSR Functional Sequence
+>>>>>>> fix-timing-work
 class bmu_csr_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_csr_seq)
 

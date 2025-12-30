@@ -19,6 +19,10 @@
 
 // Tests 
 ../tb/sequences/bmu_base_seq.sv
+<<<<<<< HEAD
+=======
+../tb/sequences/bmu_logic_seq.sv
+>>>>>>> fix-timing-work
 ../tb/tests/bmu_smoke_test.sv
 
 // Testbench files

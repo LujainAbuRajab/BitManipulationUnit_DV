@@ -6,9 +6,12 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
+=======
+>>>>>>> fix-timing-work
 // Verifies illegal configurations & overlaps
 class bmu_sub_err_seq extends bmu_base_seq;
   `uvm_object_utils(bmu_sub_err_seq)

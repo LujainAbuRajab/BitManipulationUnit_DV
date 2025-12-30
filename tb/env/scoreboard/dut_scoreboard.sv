@@ -23,66 +23,71 @@ class dut_scoreboard extends uvm_scoreboard;
   int unsigned num_out;
   int unsigned num_checked;
   int unsigned num_mismatches;
-
+    bmu_transaction c;
   function new(string name="dut_scoreboard", uvm_component parent=null);
     super.new(name, parent);
     in_imp  = new("in_imp",  this);
     out_imp = new("out_imp", this);
+      c = bmu_transaction::type_id::create("in_copy");
+
   endfunction
 
-  // -------------------------------------------------
-  // UVM analysis write methods
-  // NOTE: Xcelium uses write() naming for analysis_imp.
-  // We differentiate via the "imp" instance names by overloading:
-  // - write() for in_imp calls write_in()
-  // - write() for out_imp calls write_out()
-  // -------------------------------------------------
-
-  // Xcelium/IEEE: analysis_imp calls write(T t)
   function void write(bmu_transaction t);
     // This default should never be used because we bind to two imps.
     `uvm_warning("SCB_WRITE", "Default write() called; expected write_in/write_out dispatch.")
-  endfunction
-
-  // Dedicated input path
-  function void write_in(bmu_transaction t);
-    bmu_transaction c;
-    c = bmu_transaction::type_id::create("in_copy");
-    c.copy(t);
-    in_q.push_back(c);
-    num_in++;
-    try_check();
-  endfunction
-
-  // Dedicated output path
-  function void write_out(bmu_transaction t);
-    bmu_transaction c;
-    c = bmu_transaction::type_id::create("out_copy");
-    c.copy(t);
-    out_q.push_back(c);
-    num_out++;
-    try_check();
+      c.copy(t);
+      in_q.push_back(c);
+      num_in++;
+      try_check();
   endfunction
 
   // Hook up the imps to the right methods
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-    // Bind analysis_imp callbacks explicitly
-    // in_imp.set_imp(this, "write_in");         // [Naser.t] : you connect the analysis port in the enviroment , no need for this 
-    // out_imp.set_imp(this, "write_out");
+    
   endfunction
-
-  // Checking (FIFO match; no latency assumption)
+  task automatic print_topology(string signal_name, string expected , string actual, logic test_pass, bmu_transaction t);
+      if(test_pass)
+      begin
+        `uvm_info(get_type_name(), "*------------TEST PASSED-------------*", UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|------      %s", signal_name), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| %s_actual = %s", signal_name, actual), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| %s_expected = %s", signal_name, expected), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| a=0x%08h b=0x%08h valid=%0b", t.a_in, t.b_in, t.valid_in), UVM_NONE)
+       // `uvm_info(get_type_name(), $sformatf("| ap=%p", t.ap), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), "*-----------------------------------*", UVM_NONE)
+      end
+      else 
+      begin
+        `uvm_error(get_type_name(), "X------------TEST FAILED------------X")
+        `uvm_info(get_type_name(), $sformatf("|------      %s", signal_name), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| %s_actual = %s", signal_name, actual), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| %s_expected = %s", signal_name, expected), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("| a=0x%08h b=0x%08h valid=%0b", t.a_in, t.b_in, t.valid_in), UVM_NONE)
+        //`uvm_info(get_type_name(), $sformatf("| ap=%p", t.ap), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("|*************************************"), UVM_NONE)
+        `uvm_info(get_type_name(), "*-----------------------------------*", UVM_NONE)
+      end
+  endtask : print_topology
+  // Checking (FIFO match no latency assumption)
   function void try_check();
+  
+        
     bmu_transaction in_t;
     bmu_transaction out_t;
     logic [31:0] exp_result;
     logic        exp_error;
+    `uvm_info("inside try_check function", "", UVM_LOW);
 
     // Match in order: 1 input corresponds to 1 output
-    while ((in_q.size() > 0) && (out_q.size() > 0)) begin
+    while ((in_q.size() > 0)) begin
+    `uvm_info("inside while loop", "", UVM_LOW);
       in_t  = in_q.pop_front();
-      out_t = out_q.pop_front();
 
       // Predict expected outputs from the VP subset only
       compute_expected(in_t, exp_result, exp_error);
@@ -90,22 +95,24 @@ class dut_scoreboard extends uvm_scoreboard;
       num_checked++;
 
       // Compare error first
-      if (out_t.dut_error !== exp_error) begin
+      if (in_t.dut_error !== exp_error) begin
         num_mismatches++;
-        `uvm_error("SCB_ERR_MISMATCH",
-          $sformatf("Error mismatch. exp=%0b got=%0b | in=%s",
-                    exp_error, out_t.dut_error, in_t.convert2string()))
+
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,0, in_t);
       end
+        else 
+        print_topology("in_t.dut_error" , $sformatf("%h", exp_error) ,  $sformatf("%h", in_t.dut_error) ,1, in_t);
 
       // Compare result only when not error (per DUT coding style)
       if (!exp_error) begin
-        if (out_t.dut_result !== exp_result) begin
+        if (in_t.dut_result !== exp_result) begin
           num_mismatches++;
-          `uvm_error("SCB_RES_MISMATCH",
-            $sformatf("Result mismatch. exp=0x%08h got=0x%08h | in=%s",
-                      exp_result, out_t.dut_result, in_t.convert2string()))
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,1, in_t);
         end
+        else 
+        print_topology("in_t.dut_result" , $sformatf("%h", exp_result) ,  $sformatf("%h", in_t.dut_result) ,0, in_t);
       end
+
     end
   endfunction
 
@@ -127,7 +134,7 @@ class dut_scoreboard extends uvm_scoreboard;
     exp_result = '0;
     exp_error  = 1'b0;
 
-    // -------- Guard / error conditions from VP --------
+    //error conditions from VP
     // CSR conflict: csr_ren_in asserted while any op enabled
     if (t.csr_ren_in && (t.ap != '0)) begin
       exp_error = 1'b1;
@@ -140,10 +147,7 @@ class dut_scoreboard extends uvm_scoreboard;
       return;
     end
 
-    // You can extend invalid combinations here later (multi-enables, etc.)
-    // Note: current transaction constraint enforces onehot, but error sequences will relax it.
-
-    //Functional expectations (VP ops only)
+    //Functional expectations
     // Logical ops: OR/ORN/XOR/XNOR via lor/lxor with zbb meaning inverted operand mode
     if (t.ap.lor && !t.ap.zbb) begin
       exp_result = a_u | b_u;                 // OR
@@ -211,7 +215,7 @@ class dut_scoreboard extends uvm_scoreboard;
       exp_result = {a_u[15:0], b_u[15:0]};
     end
 
-    // GREV (your VP constrains to byte reverse mode b[4:0]=11000; RTL uses grev bit)
+    // GREV (VP constrains to byte reverse mode b[4:0]=11000)
     else if (t.ap.grev) begin
       // For VP scope we treat GREV as byte swap when shamt==24 (0x18)
       if (t.b_in[4:0] == 5'b11000) exp_result = {a_u[15:8],a_u[7:0],a_u[31:24],a_u[23:16]};

@@ -7,9 +7,12 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 import rtl_pkg::*;
 
+<<<<<<< HEAD
 // `include "bmu_base_seq.sv"
 // `include "transaction.sv"
 
+=======
+>>>>>>> fix-timing-work
 // BMU Logic Error / Guard Sequence
 // for guard / overlap / CSR conflict to OR/XOR
 class bmu_logic_err_seq extends bmu_base_seq;
@@ -22,30 +25,30 @@ class bmu_logic_err_seq extends bmu_base_seq;
 
   // Helper لتقليل التكرار
   task automatic send_err_case(
-    string name,
-    bit csr_conflict,
-    rtl_alu_pkt_t ap_cfg
+  string name,
+  bit csr_conflict,
+  rtl_alu_pkt_t ap_cfg
   );
-    bmu_transaction tr;
+  bmu_transaction tr;
 
-    tr = bmu_transaction::type_id::create(name);
-    start_item(tr);
+  tr = bmu_transaction::type_id::create(name);
+  start_item(tr);
 
-    if (csr_conflict) begin
-      assert(tr.randomize() with { valid_in==1; csr_ren_in==1; });
-    end
-    else begin
-      assert(tr.randomize() with { valid_in==1; csr_ren_in==0; });
-    end
+  if (csr_conflict) begin
+    assert(tr.randomize() with { valid_in==1; csr_ren_in==1; });
+  end
+  else begin
+    assert(tr.randomize() with { valid_in==1; csr_ren_in==0; });
+  end
 
-    tr.ap = ap_cfg;
+  tr.ap = ap_cfg;
 
-    // Ensure no Xs on unrelated fields (optional but helpful)
-    tr.scan_mode     = 1'b0;
-    tr.csr_rddata_in = '0;
+  // Ensure no Xs on unrelated fields
+  tr.csr_rddata_in = '0;
 
-    finish_item(tr);
-  endtask
+  finish_item(tr);
+endtask
+
 
   task body();
     rtl_alu_pkt_t ap;
